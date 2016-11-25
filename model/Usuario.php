@@ -6,12 +6,15 @@ class Usuario {
     public $tipo;
     public $nome;
     public $email;
-
-    public function __construct($cpf, $tipo, $nome, $email) {
+    public $senha;
+    
+    public function __construct($cpf, $tipo, $nome, $email, $senha) {
         $this->cpf = $cpf;
         $this->tipo = $tipo;
         $this->email = $email;
         $this->nome = $nome;
+        $this->nome = $senha;
+        
     }
 
 }

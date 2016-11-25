@@ -128,7 +128,8 @@ CREATE TABLE `usuario` (
   `cpf_usuario` varchar(11) NOT NULL,
   `tipo_usuario` varchar(13) NOT NULL,
   `nome_usuario` varchar(100) NOT NULL,
-  `email_usuario` varchar(100) NOT NULL
+  `email_usuario` varchar(100) NOT NULL,
+  `senha_usuario` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
