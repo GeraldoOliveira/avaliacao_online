@@ -17,6 +17,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
+              <h2 class="text-center text-muted">Sistema Online de Avaliação</h2>
               <form role="form" action="../controller/Login.php" method="POST">
               <div class="form-group">
                 <label class="control-label" for="InputEmail1">Usuário</label>
@@ -33,7 +34,7 @@
                 <select class="form-control" name="tipo" id="InputTipo" value="Aluno" type="text" required="">
                   <option>Aluno</option>
                   <option>Professor</option>
-                  <option>Admnistrador</option>
+                  <option>Administrador</option>
                 </select>
               </div>
               <?php
