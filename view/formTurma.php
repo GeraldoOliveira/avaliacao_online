@@ -13,7 +13,7 @@ include_once 'header.php';
                             <div class="form-group">
                                 <label class="control-label" for="InputText">Código</label>
                                 <input class="form-control" name="codigo" id="InputCodigo" placeholder="Código da turma"
-                                       type="text" maxlength="9" value=" <?php echo str_pad($turma, 4, "0", STR_PAD_LEFT); ?>" disabled="" required> <!-- Exibre o código da nova turma -->
+                                       type="text" maxlength="9" value=" <?php echo str_pad($turma, 4, "0", STR_PAD_LEFT); ?>" readonly required> <!-- Exibre o código da nova turma  no formato "0000" e não permite que o campo seja editado (readonly) -->
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="InputDisciplina">Disciplina</label>
