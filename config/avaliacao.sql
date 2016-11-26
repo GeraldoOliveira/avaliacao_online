@@ -68,7 +68,7 @@ CREATE TABLE `avaliacao` (
 CREATE TABLE `disciplina` (
   `codigo_disciplina` varchar(6) NOT NULL,
   `nome_disciplina` varchar(100) NOT NULL,
-  `descricao_disciplia` text NOT NULL
+  `descricao_disciplina` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

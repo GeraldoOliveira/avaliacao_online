@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_num_rows($result) == 1) {
         
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         if($row['senha_usuario'] == $password) {
             
