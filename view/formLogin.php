@@ -1,5 +1,4 @@
 
-
 <html>
   <head>
     <meta charset="utf-8">
@@ -38,11 +37,11 @@
                 </select>
               </div>
               <?php
-              if(isset($_GET['erro'])){
-                 echo "<p class=\"text-danger\">" . $_GET['erro'] . "</p>"; 
+              if(isset($_GET['falha'])){
+                 echo "<p class=\"text-danger\">" . $_GET['falha'] . "</p>";
               }
               ?>  
-              <button type="submit" name="submit" class="btn btn-default">Entrar</button>
+              <button type="submit" name="submit" class="btn btn-info">Entrar</button>
             </form>
           </div>
         </div>
