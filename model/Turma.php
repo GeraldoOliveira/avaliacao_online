@@ -22,13 +22,14 @@ class Turma {
         $this->status = $status;
     }
 
-    public function getProfList() {
-        // aqui vão alguns registros para simular uma base de dados
+    public function insert() {
+        
         include_once ("Conexao.php");
-        $sql = "SELECT nome_usuario FROM usuario WHERE tipo_usuario = 'Professor'";
-        $allProf = mysql_query($sql);
-        mysql_close();
-        return $allProf;
+        $sql = "INSERT INTO turma  (codigo_turma, disciplina_turma, ano_turma, periodo_turma, professor_turma, vagas_turma) VALUES (" . $this->codigo . ", '" . $this->disciplina . "' , " . $this->ano . " , " . $this->periodo . ", " . $this->professor . ", " . $this->vagas . ")";
+        $result = mysqli_query($con, $sql);
+        echo $sql;
+        return $result;
+        
     }
 
 }

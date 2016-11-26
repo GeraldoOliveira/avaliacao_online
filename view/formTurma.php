@@ -1,4 +1,6 @@
-<?php include_once 'header.php'; ?>
+<?php
+include_once 'header.php'; 
+?>
 
 <html>
     <body>
@@ -11,32 +13,51 @@
                             <div class="form-group">
                                 <label class="control-label" for="InputText">Código</label>
                                 <input class="form-control" name="codigo" id="InputCodigo" placeholder="Código da turma"
-                                       type="text" maxlength="8" pattern="[A-Z]{3}[0-9]{3}" required>
+                                       type="text" maxlength="9" value=" <?php echo str_pad($turma, 4, "0", STR_PAD_LEFT); ?>" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="InputText">Disciplina</label>
-                                <input class="form-control" name="disciplina" id="InputNome" placeholder="Disciplina da turma"
-                                       type="text" maxlength="6" required>
+                                <label class="control-label" for="InputDisciplina">Disciplina</label>
+                                <select class="form-control" name="disciplina" id="InputDisciplina" placeholder="Escolha uma disciplina" type="text" required>
+                                    <?php
+                                    foreach ($disciplinas as $disciplina) {
+                                        echo "<option value=" . $disciplina->codigo . ">" . $disciplina->codigo . " - " .  $disciplina->nome . "</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="InputText">Ano</label>
                                 <input class="form-control" name="ano" id="InputNome" placeholder="Ano da turma"
-                                       type="text" maxlength="4" required>
+                                       type="text" maxlength="4" pattern="[0-9]+$" value="<?php echo date('Y'); ?>" required>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="InputText">Período</label>
-                                <input class="form-control" name="periodo" id="InputNome" placeholder="Período da turma"
-                                       type="text" maxlength="1" required>
+                                <label class="control-label" for="InputPeriodo">Período</label>
+                                <select class="form-control" name="periodo" id="InputPeriodo" value="1" type="text" required>
+                                    <option value="1">1º</option>
+                                    <option value="2">2º</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label" for="InputProfessor">Professor</label>
+                                <select class="form-control" name="professor" id="InputNome" placeholder="Escolha um professor"
+                                        type="text" required>
+                                     <?php
+                                    foreach ($allProfs as $prof) {
+                                        echo "<option value=" . $prof->cpf . ">" . $prof->nome . "</option>";
+                                    }
+                                    ?> 
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="InputText">Vagas</label>
-                                <input class="form-control" name="vagas" id="InputNome" placeholder="Vagas da turma"
-                                       type="text" maxlength="2" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="InputText">Vagas</label>
-                                <input class="form-control" name="professor" id="InputNome" placeholder="Vagas da turma"
-                                       type="text" maxlength="2" required>
+                                <label class="control-label" for="InputVagas">Vagas</label>
+                                <select class="form-control" name="vagas" id="InputVagas" type="text" required>
+                                    <?php
+                                    for ($i=9;$i<100;$i++) {
+                                        echo "<option>" . ($i+1) . "</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <button type="submit" name="submit" class="btn btn-info">Cadastrar</button>
                         </form>

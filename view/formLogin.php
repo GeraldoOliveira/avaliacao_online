@@ -30,7 +30,7 @@
               </div>
                 <div class="form-group">
                 <label class="control-label" for="InputTipo">Tipo de usuário</label>
-                <select class="form-control" name="tipo" id="InputTipo" value="Aluno" type="text" required="">
+                <select class="form-control" name="tipo" id="InputTipo" value="Aluno" type="text" required
                   <option>Aluno</option>
                   <option>Professor</option>
                   <option>Administrador</option>

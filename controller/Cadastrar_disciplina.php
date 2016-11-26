@@ -1,18 +1,22 @@
 <?php
 
-if (isset($_POST['submit'])) {
-    include_once ("../model/Disciplina.php");
+include_once ("../model/Disciplina.php");
 
-    $codigo = $_POST['codigo'];
-    $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
 
-    $disciplina = new Disciplina($codigo, $nome, $descricao);
-    
-    if ($disciplina->insert() == false) {
-        header("Location:../view/resposta.php?falha='O código da disciplina já existe.'");
-    } else {
-        header("Location:../view/resposta.php?sucesso='O código da disciplina já existe.'");
-    }
-}
+        if (isset($_POST['submit'])) {
+
+            $codigo = $_POST['codigo'];
+            $nome = $_POST['nome'];
+            $descricao = $_POST['descricao'];
+            $status = "Aberta";
+
+            $disciplina = new Disciplina($codigo, $nome, $descricao, $status);
+
+            if ($disciplina->insert() == false) {
+                header("Location:../view/resposta.php?falha=Não foi possivel cadastar a disciplina.");
+            } else {
+                header("Location:../view/resposta.php?sucesso=Disciplina cadastrada com sucesso.");
+            }
+        }
+
 ?>

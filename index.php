@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        header("Location:view/formDisciplina.php");
+        header("Location:view/formLogin.php");
         ?>
     </body>
 </html>

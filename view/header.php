@@ -1,11 +1,12 @@
 <?php
 
 // Valida a sessao
-include_once '../ontroller/Validacao.php';
+include_once '../controller/Validacao.php';
 
 // Define o link da home pra cada tipo de usuario
 $tipo_sessao = $_SESSION['tipo'];
 
+$home = "home" . $tipo_sessao . ".php"
 ?>
 
 <html>
@@ -23,15 +24,15 @@ $tipo_sessao = $_SESSION['tipo'];
   
   
  <!-- Cria o menu -->
-  <body>
+   <body>
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
           <div class="btn-group btn-group-lg">
-            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Disciplinas  <span class="fa fa-caret-down"></span></a>
+            <a class="btn btn-info dropdown-toggle" data-toggle="dropdown">Disciplinas  </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a href="#">Cadastar</a>
+                  <a href="formDisciplina.php">Cadastar</a>
               </li>
               <li>
                 <a href="#">Listar</a>
@@ -45,10 +46,10 @@ $tipo_sessao = $_SESSION['tipo'];
             </ul>
           </div>
           <div class="btn-group btn-group-lg">
-            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Turmas  <span class="fa fa-caret-down"></span></a>
+            <a class="btn btn-info dropdown-toggle" data-toggle="dropdown">Turmas  </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a href="#">Cadastar</a>
+                  <a href="../controller/Cadastrar_turma.php">Cadastar</a>
               </li>
               <li>
                 <a href="#">Listar</a>
@@ -65,14 +66,14 @@ $tipo_sessao = $_SESSION['tipo'];
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="Location:../view/home<?php echo $tipo_sessao; ?>.php">Home</a>
+              <a href="<?php echo $home; ?>">Home</a>
             </li>
             <li>
-                <a href="../controller/Logout.php">Sair</a>
+              <a href="../controller/Logout.php">Sair</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-  </body>
+   </body>
 </html>

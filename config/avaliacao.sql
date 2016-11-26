@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Nov-2016 às 23:18
+-- Generation Time: 26-Nov-2016 às 18:07
 -- Versão do servidor: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alunoavaliacao` (
   `aluno_alunoavaliacao` varchar(11) NOT NULL,
-  `avaliacao_alunoavaliacao` varchar(10) NOT NULL,
+  `avaliacao_alunoavaliacao` int(9) NOT NULL,
   `nota_alunoavaliacao` float NOT NULL DEFAULT '0',
   `status_alunoavaliacao` varchar(14) NOT NULL DEFAULT 'Não Respondida'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,7 +40,7 @@ CREATE TABLE `alunoavaliacao` (
 --
 
 CREATE TABLE `alunoturma` (
-  `turma_alunoturma` varchar(8) NOT NULL,
+  `turma_alunoturma` int(9) NOT NULL,
   `aluno_alunoturma` varchar(11) NOT NULL,
   `nota_alunoturma` float NOT NULL DEFAULT '0',
   `qtde_avaliacao_repondida_alunoturma` int(2) NOT NULL DEFAULT '0'
@@ -53,8 +53,8 @@ CREATE TABLE `alunoturma` (
 --
 
 CREATE TABLE `avaliacao` (
-  `codigo_avaliacao` varchar(10) NOT NULL,
-  `turma_avaliacao` varchar(8) NOT NULL,
+  `codigo_avaliacao` int(9) NOT NULL,
+  `turma_avaliacao` int(9) NOT NULL,
   `qtde_questao_avaliacao` int(2) NOT NULL DEFAULT '0',
   `status_avaliacao` varchar(9) NOT NULL DEFAULT 'Aberta'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -68,8 +68,21 @@ CREATE TABLE `avaliacao` (
 CREATE TABLE `disciplina` (
   `codigo_disciplina` varchar(6) NOT NULL,
   `nome_disciplina` varchar(100) NOT NULL,
-  `descricao_disciplina` text NOT NULL
+  `descricao_disciplina` text NOT NULL,
+  `status_disciplina` varchar(7) NOT NULL DEFAULT 'Aberta'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `disciplina`
+--
+
+INSERT INTO `disciplina` (`codigo_disciplina`, `nome_disciplina`, `descricao_disciplina`, `status_disciplina`) VALUES
+('COM111', 'Redes', 'Disciplina de redes', 'Aberta'),
+('COM222', 'Programamção', 'Disciplina de progamação', 'Aberta'),
+('COM333', 'Banco de Dados', 'Disciplina de banco de dados', 'Aberta'),
+('SIN111', 'Empreendedorismo', 'Disciplina de empreendedorismo', 'Aberta'),
+('SIN222', 'Administração', 'Administração', 'Aberta'),
+('SIN333', 'Metodologia científica', 'Disciplina de metodologia científica', 'Aberta');
 
 -- --------------------------------------------------------
 
@@ -78,7 +91,7 @@ CREATE TABLE `disciplina` (
 --
 
 CREATE TABLE `questao` (
-  `codigo_questao` varchar(10) NOT NULL,
+  `codigo_questao` int(9) NOT NULL,
   `disciplina_questao` varchar(6) NOT NULL,
   `enunciado_questao` text NOT NULL,
   `alternativa1_questao` text NOT NULL,
@@ -96,8 +109,8 @@ CREATE TABLE `questao` (
 
 CREATE TABLE `resposta` (
   `aluno_resposta` varchar(11) NOT NULL,
-  `avaliacao_resposta` varchar(10) NOT NULL,
-  `questao_resposta` varchar(9) NOT NULL,
+  `avaliacao_resposta` int(9) NOT NULL,
+  `questao_resposta` int(9) NOT NULL,
   `alternativa_resposta` char(1) NOT NULL,
   `status_resposta` varchar(7) NOT NULL DEFAULT 'Errou'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -109,14 +122,24 @@ CREATE TABLE `resposta` (
 --
 
 CREATE TABLE `turma` (
-  `codigo_turma` varchar(8) NOT NULL,
+  `codigo_turma` int(9) NOT NULL,
   `disciplina_turma` varchar(6) NOT NULL,
   `ano_turma` int(4) NOT NULL,
   `periodo_turma` int(1) NOT NULL,
   `vagas_turma` int(2) NOT NULL,
   `professor_turma` varchar(11) NOT NULL,
-  `qtde_avaliacao_turma` int(2) NOT NULL DEFAULT '0'
+  `qtde_avaliacao_turma` int(2) NOT NULL DEFAULT '0',
+  `status_turma` varchar(10) NOT NULL DEFAULT 'Aberta'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `turma`
+--
+
+INSERT INTO `turma` (`codigo_turma`, `disciplina_turma`, `ano_turma`, `periodo_turma`, `vagas_turma`, `professor_turma`, `qtde_avaliacao_turma`, `status_turma`) VALUES
+(1, 'COM111', 2016, 1, 50, '44444444444', 0, 'Aberta'),
+(2, 'COM222', 2016, 2, 50, '44444444444', 0, 'Aberta'),
+(3, 'SIN333', 2017, 1, 50, '11111111111', 0, 'Aberta');
 
 -- --------------------------------------------------------
 
@@ -131,6 +154,21 @@ CREATE TABLE `usuario` (
   `email_usuario` varchar(100) NOT NULL,
   `senha_usuario` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`cpf_usuario`, `tipo_usuario`, `nome_usuario`, `email_usuario`, `senha_usuario`) VALUES
+('11111111111', 'Administrador', 'Laércio Baldochi', 'baldochi@unifei.edu.br', 'a'),
+('11111111111', 'Professor', 'Laércio Baldochi', 'baldochi@unifei.edu.br', 'a'),
+('22222222222', 'Aluno', 'Éderson Carlos Rodrigues', 'ederson@unifei.edu.br', 'a'),
+('33333333333', 'Aluno', 'Geraldo V. Oliveira Neto', 'geraldo@unifei.edu.br', 'a'),
+('44444444444', 'Aluno', 'Augusto José A. Rosa', 'augusto@unifei.edu.br', 'a'),
+('44444444444', 'Professor', 'Augusto José A. Rosa', 'augusto@unifei.edu.br', 'a'),
+('55555555555', 'Aluno', 'Ana Maria Braga', 'ana.maria@unifei.edu.br', 'a'),
+('66666666666', 'Aluno', 'Isabel Andrade', 'isabel@unifei.edu.br', 'a'),
+('77777777777', 'Aluno', 'Thais Braga', 'thais@unifei.edu.br', 'a');
 
 --
 -- Indexes for dumped tables
@@ -192,6 +230,25 @@ ALTER TABLE `turma`
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`cpf_usuario`,`tipo_usuario`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `avaliacao`
+--
+ALTER TABLE `avaliacao`
+  MODIFY `codigo_avaliacao` int(9) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `questao`
+--
+ALTER TABLE `questao`
+  MODIFY `codigo_questao` int(9) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `turma`
+--
+ALTER TABLE `turma`
+  MODIFY `codigo_turma` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
