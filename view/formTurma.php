@@ -13,11 +13,12 @@ include_once 'header.php';
                             <div class="form-group">
                                 <label class="control-label" for="InputText">Código</label>
                                 <input class="form-control" name="codigo" id="InputCodigo" placeholder="Código da turma"
-                                       type="text" maxlength="9" value=" <?php echo str_pad($turma, 4, "0", STR_PAD_LEFT); ?>" required>
+                                       type="text" maxlength="9" value=" <?php echo str_pad($turma, 4, "0", STR_PAD_LEFT); ?>" disabled="" required> <!-- Exibre o código da nova turma -->
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="InputDisciplina">Disciplina</label>
                                 <select class="form-control" name="disciplina" id="InputDisciplina" placeholder="Escolha uma disciplina" type="text" required>
+                                    <!-- Lista todas disciplinas dentro do <select> -->
                                     <?php
                                     foreach ($disciplinas as $disciplina) {
                                         echo "<option value=" . $disciplina->codigo . ">" . $disciplina->codigo . " - " .  $disciplina->nome . "</option>";
@@ -42,7 +43,8 @@ include_once 'header.php';
                                 <label class="control-label" for="InputProfessor">Professor</label>
                                 <select class="form-control" name="professor" id="InputNome" placeholder="Escolha um professor"
                                         type="text" required>
-                                     <?php
+                                     <!-- Lista todas professores dentro do <select> -->
+                                            <?php
                                     foreach ($allProfs as $prof) {
                                         echo "<option value=" . $prof->cpf . ">" . $prof->nome . "</option>";
                                     }
@@ -52,6 +54,7 @@ include_once 'header.php';
                             <div class="form-group">
                                 <label class="control-label" for="InputVagas">Vagas</label>
                                 <select class="form-control" name="vagas" id="InputVagas" type="text" required>
+                                    <!-- Lista  quantidade de vagas de 10 a 100 -->
                                     <?php
                                     for ($i=9;$i<100;$i++) {
                                         echo "<option>" . ($i+1) . "</option>";

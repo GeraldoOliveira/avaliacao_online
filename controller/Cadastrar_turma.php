@@ -8,22 +8,27 @@ if (!isset($_POST['submit'])) {
 
     include_once ("Conexao.php");
 
+    // Procura todos os professores
     $sql = "SELECT * FROM usuario WHERE tipo_usuario = 'Professor' ORDER BY nome_usuario";
     $result = mysqli_query($con, $sql);
     $allProfs = array();
 
+    // Cria um array com todos os professores
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $allProfs[] = new Usuario($row['cpf_usuario'], $row['tipo_usuario'], $row['nome_usuario'], $row['email_usuario'], $row['senha_usuario']);
     }
 
+    //Procura todas disciplinas
     $sql = "SELECT * FROM disciplina WHERE status_disciplina = 'Aberta'";
     $result = mysqli_query($con, $sql);
     $disciplinas = array();
 
+    // Cria um arry com todas disciplinas
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $disciplinas[] = new Disciplina($row['codigo_disciplina'], $row['nome_disciplina'], $row['descricao_disciplina'], $row['status_disciplina']);
     }
-
+    
+    // Verifica qual é o proximo código de turma no banco
     $sql = "SHOW TABLE STATUS LIKE 'turma'";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
