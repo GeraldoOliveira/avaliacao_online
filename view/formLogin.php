@@ -1,5 +1,3 @@
-
-
 <html>
   <head>
     <meta charset="utf-8">
@@ -11,7 +9,6 @@
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
     rel="stylesheet" type="text/css">
   </head>
-  
   <body>
     <div class="section">
       <div class="container">

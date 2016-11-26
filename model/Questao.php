@@ -9,7 +9,7 @@ class Avaliacao {
     public $alternativa2;
     public $alternativa3;
     public $alternativa4;
-    public $respota;
+    public $respota; 
 
     public function __construct($codigo, $disciplina, $enunciado, $alternativa1, $alternativa2, $alternativa3, $alternativa4, $status) {
         $this->codigo = $codigo;

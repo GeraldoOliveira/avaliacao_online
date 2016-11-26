@@ -9,11 +9,11 @@ if (isset($_POST['submit'])) {
 
     $sql = "SELECT * FROM usuario WHERE cpf_usuario = '" . $login . "' AND tipo_usuario = '" . $tipo . "'";
 
-    $result = mysql_query($sql);
+    $result = mysqli_query($con, $sql);
 
-    if (mysql_num_rows($result) == 1) {
+    if (mysqli_num_rows($result) == 1) {
         
-        $row = mysql_fetch_array($result);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         if($row['senha_usuario'] == $password) {
             session_start();
