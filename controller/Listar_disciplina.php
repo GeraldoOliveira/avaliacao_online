@@ -81,7 +81,7 @@ if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Visualizar  o
         
     } else {
         
-       // header("Location:../view/resposta.php?falha=Não foi possível buscar a disciplina.");
+       header("Location:../view/resposta.php?falha=Não foi possível buscar a disciplina.");
     }
     
     mysqli_close($con);
