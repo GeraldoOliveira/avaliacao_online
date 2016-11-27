@@ -49,7 +49,7 @@ $home = "../view/home" . $tipo_sessao . ".php"
                   <a href="../controller/Cadastrar_turma.php">Cadastar</a>
               </li>
               <li>
-                <a href="#">Listar</a>
+                  <a href="../controller/Listar_turma.php">Listar</a>
               </li>
               <li>
                 <a href="#">Buscar</a>

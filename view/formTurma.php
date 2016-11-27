@@ -13,7 +13,7 @@ include_once 'header.php';
                             <div class="form-group">
                                 <label class="control-label" for="InputText">Código</label>
                                 <input class="form-control" name="codigo" id="InputCodigo" placeholder="Código da turma"
-                                       type="text" maxlength="9" value=" <?php echo str_pad($turma, 4, "0", STR_PAD_LEFT); ?>" readonly required> <!-- Exibre o código da nova turma  no formato "0000" e não permite que o campo seja editado (readonly) -->
+                                       type="text" maxlength="9" value="<?php echo str_pad($turma, 4, "0", STR_PAD_LEFT); ?>" readonly required> <!-- Exibre o código da nova turma  no formato "0000" e não permite que o campo seja editado (readonly) -->
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="InputDisciplina">Disciplina</label>
@@ -57,7 +57,11 @@ include_once 'header.php';
                                     <!-- Lista  quantidade de vagas de 10 a 100 -->
                                     <?php
                                     for ($i=9;$i<100;$i++) {
-                                        echo "<option>" . ($i+1) . "</option>";
+                                        if($i + 1 == 50){
+                                            echo "<option selected>" . ($i+1) . "</option>";
+                                        } else {
+                                            echo "<option>" . ($i+1) . "</option>";
+                                        }
                                     }
                                     ?>
                                 </select>
