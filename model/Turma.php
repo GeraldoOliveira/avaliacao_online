@@ -24,7 +24,7 @@ class Turma {
 
     public function insert() {
         
-        include_once ("Conexao.php");
+        include_once ("../controller/Conexao.php");
         $sql = "INSERT INTO turma  (codigo_turma, disciplina_turma, ano_turma, periodo_turma, professor_turma, vagas_turma) VALUES (" . $this->codigo . ", '" . $this->disciplina . "' , " . $this->ano . " , " . $this->periodo . ", " . $this->professor . ", " . $this->vagas . ")";
         $result = mysqli_query($con, $sql);
         echo $sql;

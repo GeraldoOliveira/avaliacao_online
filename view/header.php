@@ -6,7 +6,7 @@ include_once '../controller/Validacao.php';
 // Define o link da home pra cada tipo de usuario
 $tipo_sessao = $_SESSION['tipo'];
 
-$home = "home" . $tipo_sessao . ".php"
+$home = "../view/home" . $tipo_sessao . ".php"
 ?>
 
 <html>
@@ -32,16 +32,13 @@ $home = "home" . $tipo_sessao . ".php"
             <a class="btn btn-info dropdown-toggle" data-toggle="dropdown">Disciplinas  </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                  <a href="formDisciplina.php">Cadastar</a>
+                  <a href="../view/formDisciplina.php">Cadastar</a>
               </li>
               <li>
-                <a href="#">Listar</a>
+                  <a href="../controller/Listar_disciplina.php">Listar</a>
               </li>
               <li>
-                <a href="#">Buscar</a>
-              </li>
-              <li>
-                <a href="#">Deletar</a>
+                  <a href="../view/buscaDisciplina.php">Buscar</a>
               </li>
             </ul>
           </div>
@@ -56,9 +53,6 @@ $home = "home" . $tipo_sessao . ".php"
               </li>
               <li>
                 <a href="#">Buscar</a>
-              </li>
-              <li>
-                <a href="#">Deletar</a>
               </li>
             </ul>
           </div>
