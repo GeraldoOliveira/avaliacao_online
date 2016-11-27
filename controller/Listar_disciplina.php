@@ -4,7 +4,6 @@ include_once ("../model/Disciplina.php");
 include_once ("Conexao.php");
 
 if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Visualizar  ou edita uma disciplina
-    
     if (isset($_GET['Visualizar'])) {   // Configura a view para visualizar
         $visualizar = "disabled";
         $acao = "Modificar";
@@ -27,7 +26,6 @@ if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Visualizar  o
     mysqli_close($con);
 
     include_once ('../view/exibeDisciplina.php');
-    
 } else if (isset($_POST['Salvar'])) { // Alterar a disciplina
     $cod = $_POST['Salvar'];
     $codigo = $_POST['codigo'];
@@ -42,12 +40,10 @@ if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Visualizar  o
     } else {
         header("Location:../view/resposta.php?sucesso=Disciplina alterada com sucesso.");
     }
-    
 } else if (isset($_POST['Buscar'])) { // Busca por uma ou vária disciplinas
-   
     $codigo = $_POST['codigo'];
     $status = $_POST['status'];
-    
+
     // Define qual busca fazer
     if ($codigo == "" && $status == "") {
         header("Location:../controller/Listar_disciplina.php");
@@ -64,13 +60,12 @@ if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Visualizar  o
     $disciplinas = array();
 
     if (mysqli_num_rows($result) == 1) {
-        
+
         $visualizar = "disabled";
         $acao = "Modificar";
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $disciplina = new Disciplina($row['codigo_disciplina'], $row['nome_disciplina'], $row['descricao_disciplina'], $row['status_disciplina']);
         include_once ('../view/exibeDisciplina.php');
-        
     } else if (mysqli_num_rows($result) > 1) {
 
         // Cria um arry com todas disciplinas
@@ -78,16 +73,13 @@ if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Visualizar  o
             $disciplinas[] = new Disciplina($row['codigo_disciplina'], $row['nome_disciplina'], $row['descricao_disciplina'], $row['status_disciplina']);
         }
         include_once ('../view/listaDisciplina.php');
-        
     } else {
-        
-       header("Location:../view/resposta.php?falha=Não foi possível buscar a disciplina.");
-    }
-    
-    mysqli_close($con);
-    
-} else { // Lista toda as disciplinas
 
+        header("Location:../view/resposta.php?falha=Não foi possível buscar a disciplina.");
+    }
+
+    mysqli_close($con);
+} else { // Lista toda as disciplinas
     //Procura todas disciplinas
     $sql = "SELECT * FROM disciplina ORDER BY status_disciplina, codigo_disciplina";
     $result = mysqli_query($con, $sql);
