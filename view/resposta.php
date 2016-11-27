@@ -11,13 +11,17 @@ include_once 'header.php';
 
                         <?php
                         if (isset($_GET['falha'])) {
-                            echo "<h3 class=\"text-danger text-left\">Falha!</h3>
+                            echo "<h3 class=\"text-danger text-left\">Falha.</h3>
                                     <p>" . $_GET['falha'] . "</p>";
-                        } else {
-                            echo "<h3 class=\"text-left text-success\">Sucesso!</h3>
+                        } else  if (isset ($_GET['sucesso'])){
+                            echo "<h3 class=\"text-left text-success\">Sucesso.</h3>
                                     <p>" . $_GET['sucesso'] . "</p>";
+                        } else {
+                            echo "<h3 class=\"text-primary\">Não encontrado.</h3>
+                                    <p>" . $_GET['busca'] . "</p>";
                         }
                         ?>
+                        
                     </div>
                 </div>
             </div>
