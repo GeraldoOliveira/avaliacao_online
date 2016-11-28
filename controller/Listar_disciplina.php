@@ -3,7 +3,7 @@
 include_once ("../model/Disciplina.php");
 include_once ("Conexao.php");
 
-if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Visualizar  ou edita uma disciplina
+if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Viusalizar ou edita uma disciplina
     
     if (isset($_GET['Visualizar'])) {   // Configura a view para visualizar disciplina
         $visualizar = "disabled";

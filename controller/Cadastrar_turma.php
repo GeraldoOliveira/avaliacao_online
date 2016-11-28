@@ -9,7 +9,7 @@ if (!isset($_POST['submit'])) {
     include_once ("Conexao.php");
 
     // Procura todos os professores
-    $sql = "SELECT * FROM usuario WHERE tipo_usuario = 'Professor' AND status_usuario = 'Ativado' ORDER BY nome_usuario";
+    $sql = "SELECT * FROM usuario WHERE tipo_usuario = 'Professor' AND status_usuario = 'Ativado'";
     $result = mysqli_query($con, $sql);
     $allProfs = array();
 

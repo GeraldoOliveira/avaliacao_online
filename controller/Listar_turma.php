@@ -2,21 +2,38 @@
 
 include_once("../model/Disciplina.php");
 include_once("../model/Turma.php");
+include_once ("Conexao.php");
 
-if (isset($_POST['submit'])) {
+//Procura todas disciplinas
+$sql = "SELECT * FROM disciplina";
+$result = mysqli_query($con, $sql);
+$disciplinas = array();
+
+// Cria um arry com todas disciplinas
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $disciplinas[] = new Disciplina($row['codigo_disciplina'], $row['nome_disciplina'], $row['descricao_disciplina'], $row['status_disciplina']);
+}
+
+// Procura todos os professores
+$sql = "SELECT * FROM usuario WHERE tipo_usuario = 'Professor' ORDER BY nome_usuario";
+$result = mysqli_query($con, $sql);
+$allProfs = array();
+
+// Cria um array com todos os professores
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $allProfs[] = new Usuario($row['cpf_usuario'], $row['tipo_usuario'], $row['nome_usuario'], $row['email_usuario'], $row['senha_usuario'], $row['status_usuario']);
+}
+
+
+if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) {
+    
+    
+    
+    
+    
     
 } else { // Lista todas as turmas
-    include_once ("Conexao.php");
-
-    //Procura todas disciplinas
-    $sql = "SELECT * FROM disciplina";
-    $result = mysqli_query($con, $sql);
-    $disciplinas = array();
-
-    // Cria um arry com todas disciplinas
-    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $disciplinas[] = new Disciplina($row['codigo_disciplina'], $row['nome_disciplina'], $row['descricao_disciplina'], $row['status_disciplina']);
-    }
+    
 
     //Procura todos anos
     $sql = "SELECT DISTINCT ano_turma FROM turma ORDER BY ano_turma DESC";
