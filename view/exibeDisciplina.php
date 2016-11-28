@@ -41,7 +41,7 @@
                                 </select>
                             </div>
                             <input name="<?php echo $acao; ?>" type="hidden" value="<?php echo $disciplina->codigo; ?>">
-                            <button type="submit" name="Salvar" class="btn btn-info"><?php echo $acao; ?></button>
+                            <button type="submit" name="Alterar" class="btn btn-info"><?php echo $acao; ?></button>
                         </form>
                     </div>
                 </div>

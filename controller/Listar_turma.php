@@ -2,6 +2,7 @@
 
 include_once("../model/Disciplina.php");
 include_once("../model/Turma.php");
+include_once("../model/Usuario.php");
 include_once ("Conexao.php");
 
 //Procura todas disciplinas
@@ -9,7 +10,7 @@ $sql = "SELECT * FROM disciplina";
 $result = mysqli_query($con, $sql);
 $disciplinas = array();
 
-// Cria um arry com todas disciplinas
+// Cria um array com todas disciplinas
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $disciplinas[] = new Disciplina($row['codigo_disciplina'], $row['nome_disciplina'], $row['descricao_disciplina'], $row['status_disciplina']);
 }

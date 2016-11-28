@@ -3,7 +3,7 @@
 include_once ("../model/Disciplina.php");
 include_once ("Conexao.php");
 
-if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Viusalizar ou edita uma disciplina
+if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Visualizar ou edita uma disciplina
     
     if (isset($_GET['Visualizar'])) {   // Configura a view para visualizar disciplina
         $visualizar = "disabled";
@@ -28,7 +28,7 @@ if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Viusalizar ou
 
     include_once ('../view/exibeDisciplina.php');
     
-} else if (isset($_POST['Salvar'])) { // Alterar a disciplina
+} else if (isset($_POST['Alterar'])) { // Alterar a disciplina
     $cod = $_POST['Salvar'];
     $codigo = $_POST['codigo'];
     $nome = $_POST['nome'];
@@ -68,6 +68,7 @@ if (isset($_GET['Visualizar']) || isset($_POST['Modificar'])) { // Viusalizar ou
         $acao = "Modificar";
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $disciplina = new Disciplina($row['codigo_disciplina'], $row['nome_disciplina'], $row['descricao_disciplina'], $row['status_disciplina']);
+        
         include_once ('../view/exibeDisciplina.php');
         
     } else if (mysqli_num_rows($result) > 1) {
